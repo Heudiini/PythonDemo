@@ -1,0 +1,9 @@
+name: Python CSV Reader Demo
+builder:
+  name: python
+  version: 3.9
+build:
+  commands:
+    - pip install -r requirements.txt
+run:
+  web: gunicorn -b 0.0.0.0:${PORT:-5000} app:app
