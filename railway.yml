@@ -1,7 +1,4 @@
 name: Python CSV Reader Demo
-builder:
-  name: python
-  version: 3.9
 build:
   commands:
     - pip install -r requirements.txt
