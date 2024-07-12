@@ -13,8 +13,6 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-import csv
-
 def read_grades_from_file(filepath):
     # Function to read grades from a CSV file and return a dictionary
     grades = {}
@@ -45,7 +43,6 @@ def read_grades_from_file(filepath):
 
     return grades
 
-
 def calculate_top_performers(grades_dict):
     # Function to calculate top performers based on average grades
     cleaned_grades = {name: [grade for grade in grades if grade is not None] for name, grades in grades_dict.items()}
@@ -65,7 +62,6 @@ def calculate_top_performers(grades_dict):
         current_grade = grade
 
     return top_performers
-
 
 def process_performers(uploaded_grades, top_performers):
     # Function to process performers and categorize them into medal groups
@@ -88,13 +84,11 @@ def process_performers(uploaded_grades, top_performers):
 
     return medal_performers
 
-
 def create_upload_folder():
     # Function to create the upload folder if it doesn't exist
     upload_folder = os.path.abspath(app.config['UPLOAD_FOLDER'])
     if not os.path.exists(upload_folder):
         os.makedirs(upload_folder)
-
 
 @app.route('/', methods=['GET', 'POST'])
 def show_grades():
@@ -170,4 +164,4 @@ def show_grades():
     )
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()  # Debug mode poisettu
